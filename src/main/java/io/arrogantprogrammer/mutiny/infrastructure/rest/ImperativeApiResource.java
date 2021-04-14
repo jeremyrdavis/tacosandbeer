@@ -1,9 +1,9 @@
-package io.arrogantprogrammer.mutiny.api;
+package io.arrogantprogrammer.mutiny.infrastructure.rest;
 
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
 import io.arrogantprogrammer.mutiny.domain.tacos.*;
-import io.arrogantprogrammer.mutiny.infrastructure.ImperativeBeerClient;
-import io.arrogantprogrammer.mutiny.infrastructure.ImperativeTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.ImperativeBeerClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.ImperativeTacoClient;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.inject.Inject;
@@ -12,7 +12,6 @@ import javax.ws.rs.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CompletableFuture;
 
 @Path("/imperative-api")
 public class ImperativeApiResource {

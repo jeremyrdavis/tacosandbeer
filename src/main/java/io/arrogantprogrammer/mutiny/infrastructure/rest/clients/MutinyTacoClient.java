@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.infrastructure;
+package io.arrogantprogrammer.mutiny.infrastructure.rest.clients;
 
 import io.arrogantprogrammer.mutiny.domain.tacos.*;
 import io.smallrye.mutiny.Multi;
@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @RegisterRestClient(configKey = "tacofancy-api")
-public interface ReactiveTacoClient {
+public interface MutinyTacoClient {
 
     @GET
     @Path("/random/")

@@ -1,9 +1,8 @@
-package io.arrogantprogrammer.mutiny.api;
+package io.arrogantprogrammer.mutiny.infrastructure.rest;
 
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
-import io.arrogantprogrammer.mutiny.domain.tacos.Taco;
-import io.arrogantprogrammer.mutiny.infrastructure.ReactiveBeerClient;
-import io.arrogantprogrammer.mutiny.infrastructure.ReactiveTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyBeerClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyTacoClient;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -21,11 +20,11 @@ public class MutinyApiResource {
 
     @Inject
     @RestClient
-    ReactiveBeerClient beerClient;
+    MutinyBeerClient beerClient;
 
     @Inject
     @RestClient
-    ReactiveTacoClient tacoClient;
+    MutinyTacoClient tacoClient;
 
     @GET
     @Path("/tacoandbeer")

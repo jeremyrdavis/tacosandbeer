@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.infrastructure;
+package io.arrogantprogrammer.mutiny.infrastructure.rest.clients;
 
 import io.arrogantprogrammer.mutiny.domain.tacos.*;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;

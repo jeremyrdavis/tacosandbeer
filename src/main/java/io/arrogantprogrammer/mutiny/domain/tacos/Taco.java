@@ -11,12 +11,15 @@ public class Taco {
 
     private Seasoning seasoning;
 
+    private Condiment condiment;
+
     private Shell shell;
 
-    public Taco(Filling filling, Mixin mixin, Seasoning seasoning, Shell shell) {
+    public Taco(Filling filling, Mixin mixin, Seasoning seasoning, Condiment condiment, Shell shell) {
         this.filling = filling;
         this.mixin = mixin;
         this.seasoning = seasoning;
+        this.condiment = condiment;
         this.shell = shell;
     }
 
@@ -29,6 +32,7 @@ public class Taco {
         sb.append("filling=").append(filling);
         sb.append(", mixin=").append(mixin);
         sb.append(", seasoning=").append(seasoning);
+        sb.append(", condiment=").append(condiment);
         sb.append(", shell=").append(shell);
         sb.append('}');
         return sb.toString();
@@ -44,6 +48,7 @@ public class Taco {
         if (filling != null ? !filling.equals(taco.filling) : taco.filling != null) return false;
         if (mixin != null ? !mixin.equals(taco.mixin) : taco.mixin != null) return false;
         if (seasoning != null ? !seasoning.equals(taco.seasoning) : taco.seasoning != null) return false;
+        if (condiment != null ? !condiment.equals(taco.condiment) : taco.condiment != null) return false;
         return shell != null ? shell.equals(taco.shell) : taco.shell == null;
     }
 
@@ -52,6 +57,7 @@ public class Taco {
         int result = filling != null ? filling.hashCode() : 0;
         result = 31 * result + (mixin != null ? mixin.hashCode() : 0);
         result = 31 * result + (seasoning != null ? seasoning.hashCode() : 0);
+        result = 31 * result + (condiment != null ? condiment.hashCode() : 0);
         result = 31 * result + (shell != null ? shell.hashCode() : 0);
         return result;
     }
@@ -78,6 +84,14 @@ public class Taco {
 
     public void setSeasoning(Seasoning seasoning) {
         this.seasoning = seasoning;
+    }
+
+    public Condiment getCondiment() {
+        return condiment;
+    }
+
+    public void setCondiment(Condiment condiment) {
+        this.condiment = condiment;
     }
 
     public Shell getShell() {

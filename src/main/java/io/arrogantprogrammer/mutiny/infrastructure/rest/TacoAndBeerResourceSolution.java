@@ -1,12 +1,11 @@
-package io.arrogantprogrammer.mutiny.api;
+package io.arrogantprogrammer.mutiny.infrastructure.rest;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import io.arrogantprogrammer.mutiny.domain.TacoAndBeer;
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
 import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
 import io.arrogantprogrammer.mutiny.domain.tacos.Taco;
-import io.arrogantprogrammer.mutiny.infrastructure.ReactiveBeerClient;
-import io.arrogantprogrammer.mutiny.infrastructure.ReactiveTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyBeerClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.services.GreetingService;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -23,24 +22,46 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Path("/tacoandbeer")
-public class TacoAndBeerResource {
+@Path("/tacoandbeersolution")
+public class TacoAndBeerResourceSolution {
 
     @Inject
     GreetingService greetingService;
 
     @Inject
     @RestClient
-    ReactiveBeerClient beerClient;
+    MutinyBeerClient beerClient;
 
     @Inject
     @RestClient
-    ReactiveTacoClient tacoClient;
+    MutinyTacoClient tacoClient;
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<Response> tacoAndABeer() {
+        return Uni.combine().all().unis(getRandomGreeting(), getRandomTaco(), getRandomBeer())
+                .asTuple()
+                .map(tuple -> {
+                    final StringBuilder stringBuilder = new StringBuilder()
+                            .append(tuple.getItem1().getBody())
+                            .append("! Today's Taco is :")
+                            .append(tuple.getItem2().getFilling().getName())
+                            .append(" with ")
+                            .append(tuple.getItem2().getMixin().getName())
+                            .append(" and ")
+                            .append(tuple.getItem2().getSeasoning().getName())
+                            .append(" in a ")
+                            .append(tuple.getItem2().getShell().getName())
+                            .append(" with a ")
+                            .append(tuple.getItem3().getName());
+                    return Response.ok().entity(stringBuilder.toString()).build();
+                });
+    }
 
     @GET
     @Path("/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<Response> tacoAndBeer(@PathParam("name") final String name) {
+    public Uni<Response> personalizedTacoAndBeer(@PathParam("name") final String name) {
         return Uni.combine().all().unis(getRandomGreeting(), getRandomTaco(), getRandomBeer())
                 .asTuple()
                 .map(tuple -> {
@@ -96,4 +117,31 @@ public class TacoAndBeerResource {
     private Uni<Taco> getRandomTaco() {
         return tacoClient.getRandomTaco();
     }
+
+    private Uni<Taco> reallyRandomTaco() {
+        return Uni
+                .<String>combine()
+                .all()
+                .unis(
+                        tacoClient.getBaseLayers().onItem().transform(fillings -> {
+                            return fillings.get(new Random().nextInt(fillings.size()));
+                        }),
+                        tacoClient.getMixins().onItem().transform(mixins -> {
+                            return mixins.get(new Random().nextInt(mixins.size()));
+                        }),
+                        tacoClient.getSeasonings().onItem().transform(seasonings -> {
+                            return seasonings.get(new Random().nextInt(seasonings.size()));
+                        }),
+                        tacoClient.getCondiments().onItem().transform(condiments -> {
+                            return condiments.get(new Random().nextInt(condiments.size()));
+                        }),
+                        tacoClient.getShells().onItem().transform(shells -> {
+                            return shells.get(new Random().nextInt(shells.size()));
+                        }))
+                .asTuple()
+                .map(t -> {
+                    return new Taco(t.getItem1(),t.getItem2(),t.getItem3(), t.getItem4(), t.getItem5());
+                });
+    }
+
 }

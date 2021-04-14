@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.api;
+package io.arrogantprogrammer.mutiny.infrastructure.services;
 
 import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
 import io.quarkus.runtime.Startup;

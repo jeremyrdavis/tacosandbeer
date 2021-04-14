@@ -1,17 +1,14 @@
-package io.arrogantprogrammer.mutiny.api;
+package io.arrogantprogrammer.mutiny.infrastructure.rest;
 
 import io.arrogantprogrammer.mutiny.domain.tacos.Taco;
-import io.arrogantprogrammer.mutiny.infrastructure.ImperativeTacoClient;
-import io.arrogantprogrammer.mutiny.infrastructure.ReactiveTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.ImperativeTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyTacoClient;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionService;
-import java.util.concurrent.CompletionStage;
 
 @Path("/summit-api")
 public class SummitAPI {
@@ -22,7 +19,7 @@ public class SummitAPI {
 
     @Inject
     @RestClient
-    ReactiveTacoClient reactiveTacoClient;
+    MutinyTacoClient mutinyTacoClient;
 
     @GET
     @Path("/taco")
@@ -34,7 +31,7 @@ public class SummitAPI {
     @Path("/mutiny-taco")
     public Uni<Taco> randomTaco() {
 
-        return reactiveTacoClient.getRandomTaco();
+        return mutinyTacoClient.getRandomTaco();
     }
 
 

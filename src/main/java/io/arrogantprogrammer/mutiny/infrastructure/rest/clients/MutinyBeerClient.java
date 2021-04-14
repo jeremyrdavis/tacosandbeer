@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.infrastructure;
+package io.arrogantprogrammer.mutiny.infrastructure.rest.clients;
 
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
 import io.smallrye.mutiny.Uni;
@@ -10,7 +10,7 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @RegisterRestClient(configKey = "reactive-punkapi")
-public interface ReactiveBeerClient {
+public interface MutinyBeerClient {
 
     @GET
     @Path("/beers")
