@@ -17,7 +17,7 @@ public interface ReactiveTacoClient {
     @GET
     @Path("/random/")
     @Produces(MediaType.APPLICATION_JSON)
-    Taco getRandomTaco();
+    Uni<Taco> getRandomTaco();
 
     @GET
     @Path("/base_layers/")

@@ -1,6 +1,7 @@
 package io.arrogantprogrammer.mutiny.api;
 
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
+import io.arrogantprogrammer.mutiny.domain.tacos.Taco;
 import io.arrogantprogrammer.mutiny.infrastructure.ReactiveBeerClient;
 import io.arrogantprogrammer.mutiny.infrastructure.ReactiveTacoClient;
 import io.smallrye.mutiny.Multi;
@@ -29,8 +30,9 @@ public class MutinyApiResource {
     @GET
     @Path("/tacoandbeer")
     public Uni<String> getRandomTacoAndBeer() {
-        return Uni.<String>combine().all().unis(randomTaco(), randomBeer())
-                .asTuple().map(tuple -> {
+        return Uni.<String>combine().all().unis(reallyRandomTaco(), randomBeer())
+                .asTuple()
+                .map(tuple -> {
                     return new StringBuilder()
                             .append("Today's Taco and Beer is a ")
                             .append(tuple.getItem1())
@@ -59,6 +61,15 @@ public class MutinyApiResource {
     }
 
     private Uni<String> randomTaco() {
+
+        return tacoClient.getRandomTaco()
+                .onItem()
+                .transform(taco -> {
+                    return taco.toString();
+                });
+    }
+
+    private Uni<String> reallyRandomTaco() {
         return Uni
                 .<String>combine()
                 .all()

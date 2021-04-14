@@ -9,6 +9,9 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionService;
+import java.util.concurrent.CompletionStage;
 
 @Path("/summit-api")
 public class SummitAPI {
@@ -31,8 +34,10 @@ public class SummitAPI {
     @Path("/mutiny-taco")
     public Uni<Taco> randomTaco() {
 
-        return Uni.createFrom().item(reactiveTacoClient.getRandomTaco());
+        return reactiveTacoClient.getRandomTaco();
     }
+
+
 
 
 }
