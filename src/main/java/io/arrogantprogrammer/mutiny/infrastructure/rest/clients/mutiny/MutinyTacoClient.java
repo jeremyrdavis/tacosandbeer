@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.infrastructure.rest.clients;
+package io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny;
 
 import io.arrogantprogrammer.mutiny.domain.tacos.*;
 import io.smallrye.mutiny.Multi;

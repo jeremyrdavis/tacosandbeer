@@ -23,17 +23,18 @@ public class TacoAndBeer {
 
     @Override
     public String toString() {
-        return new StringBuilder("TacoAndBeer{")
+        return new StringBuilder()
                 .append(greeting.getBody())
-                .append("\n")
-                .append(" Today's Taco is a")
-                .append(taco.getFilling())
+                .append("! Today's Taco is a ")
+                .append(taco.getFilling().getName())
                 .append(" with ")
-                .append(taco.getMixin())
+                .append(taco.getMixin().getName())
                 .append(", ")
-                .append(taco.getSeasoning())
+                .append(taco.getSeasoning().getName())
                 .append(" wrapped in ")
-                .append(taco.getShell())
+                .append(taco.getShell().getName())
+                .append(" served with a ")
+                .append(beer.getName())
                 .toString();
     }
 

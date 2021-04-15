@@ -1,10 +1,11 @@
-package io.arrogantprogrammer.mutiny.infrastructure.rest;
+package io.arrogantprogrammer.mutiny.infrastructure.rest.solutions;
 
+import io.arrogantprogrammer.mutiny.domain.TacoAndBeer;
 import io.arrogantprogrammer.mutiny.domain.beers.Beer;
 import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
 import io.arrogantprogrammer.mutiny.domain.tacos.Taco;
-import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyBeerClient;
-import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.MutinyTacoClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny.MutinyBeerClient;
+import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny.MutinyTacoClient;
 import io.arrogantprogrammer.mutiny.infrastructure.services.GreetingService;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
@@ -37,49 +38,15 @@ public class TacoAndBeerResourceSolution {
     MutinyTacoClient tacoClient;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<Response> tacoAndABeer() {
-        return Uni.combine().all().unis(getRandomGreeting(), getRandomTaco(), getRandomBeer())
-                .asTuple()
-                .map(tuple -> {
-                    final StringBuilder stringBuilder = new StringBuilder()
-                            .append(tuple.getItem1().getBody())
-                            .append("! Today's Taco is :")
-                            .append(tuple.getItem2().getFilling().getName())
-                            .append(" with ")
-                            .append(tuple.getItem2().getMixin().getName())
-                            .append(" and ")
-                            .append(tuple.getItem2().getSeasoning().getName())
-                            .append(" in a ")
-                            .append(tuple.getItem2().getShell().getName())
-                            .append(" with a ")
-                            .append(tuple.getItem3().getName());
-                    return Response.ok().entity(stringBuilder.toString()).build();
-                });
-    }
+    public Uni<String> tacoAndBeer() {
 
-    @GET
-    @Path("/{name}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<Response> personalizedTacoAndBeer(@PathParam("name") final String name) {
-        return Uni.combine().all().unis(getRandomGreeting(), getRandomTaco(), getRandomBeer())
+        return Uni.combine().all().unis(
+                getRandomGreeting(),
+                getRandomTaco(),
+                getRandomBeer())
                 .asTuple()
                 .map(tuple -> {
-                    final StringBuilder stringBuilder = new StringBuilder()
-                            .append(tuple.getItem1().getBody())
-                            .append(", ")
-                            .append(name)
-                            .append("! Today's Taco is :")
-                            .append(tuple.getItem2().getFilling().getName())
-                            .append(" with ")
-                            .append(tuple.getItem2().getMixin().getName())
-                            .append(" and ")
-                            .append(tuple.getItem2().getSeasoning().getName())
-                            .append(" in a ")
-                            .append(tuple.getItem2().getShell().getName())
-                            .append(" with a ")
-                            .append(tuple.getItem3().getName());
-                    return Response.ok().entity(stringBuilder.toString()).build();
+                    return new TacoAndBeer(tuple.getItem1(), tuple.getItem2(), tuple.getItem3()).toString();
                 });
     }
 
@@ -100,21 +67,20 @@ public class TacoAndBeerResourceSolution {
                 .transform(beerList -> {
                     return(Beer) beerList.get(new Random().nextInt(beerList.size()));
                 });
-
     }
 
     private Uni<Greeting> getRandomGreeting() {
-        return greetingService
-                .findAll()
+        return greetingService.findAll()
                 .collect()
                 .asList()
                 .onItem()
-                .transform(list -> {
-                    return list.get(new Random().nextInt(list.size()));
+                .transform(greetings -> {
+                    return greetings.get(new Random().nextInt(greetings.size()));
                 });
     }
 
     private Uni<Taco> getRandomTaco() {
+
         return tacoClient.getRandomTaco();
     }
 
