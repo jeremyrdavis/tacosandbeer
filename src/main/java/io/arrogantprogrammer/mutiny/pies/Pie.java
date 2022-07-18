@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.domain;
+package io.arrogantprogrammer.mutiny.pies;
 
 public class Pie {
 

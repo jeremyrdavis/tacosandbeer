@@ -1,11 +1,10 @@
 package io.arrogantprogrammer.mutiny.infrastructure.rest.clients.imperative;
 
-import io.arrogantprogrammer.mutiny.domain.beers.Beer;
+import io.arrogantprogrammer.mutiny.beers.domain.Beer;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import java.util.List;
 

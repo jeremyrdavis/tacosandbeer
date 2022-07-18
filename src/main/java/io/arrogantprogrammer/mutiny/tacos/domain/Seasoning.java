@@ -1,8 +1,8 @@
-package io.arrogantprogrammer.mutiny.domain.tacos;
+package io.arrogantprogrammer.mutiny.tacos.domain;
 
 import java.net.URL;
 
-public class Condiment {
+public class Seasoning {
 
     private String slug;
 
@@ -12,19 +12,19 @@ public class Condiment {
 
     private URL url;
 
-    public Condiment(String slug, String recipe, String name, URL url) {
+    public Seasoning(String slug, String recipe, String name, URL url) {
         this.slug = slug;
         this.recipe = recipe;
         this.name = name;
         this.url = url;
     }
 
-    public Condiment() {
+    public Seasoning() {
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Condiment{");
+        final StringBuilder sb = new StringBuilder("Seasoning{");
         sb.append("slug='").append(slug).append('\'');
         sb.append(", recipe='").append(recipe).append('\'');
         sb.append(", name='").append(name).append('\'');
@@ -38,12 +38,12 @@ public class Condiment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Condiment condiment = (Condiment) o;
+        Seasoning seasoning = (Seasoning) o;
 
-        if (slug != null ? !slug.equals(condiment.slug) : condiment.slug != null) return false;
-        if (recipe != null ? !recipe.equals(condiment.recipe) : condiment.recipe != null) return false;
-        if (name != null ? !name.equals(condiment.name) : condiment.name != null) return false;
-        return url != null ? url.equals(condiment.url) : condiment.url == null;
+        if (slug != null ? !slug.equals(seasoning.slug) : seasoning.slug != null) return false;
+        if (recipe != null ? !recipe.equals(seasoning.recipe) : seasoning.recipe != null) return false;
+        if (name != null ? !name.equals(seasoning.name) : seasoning.name != null) return false;
+        return url != null ? url.equals(seasoning.url) : seasoning.url == null;
     }
 
     @Override
@@ -86,5 +86,4 @@ public class Condiment {
     public void setUrl(URL url) {
         this.url = url;
     }
-
 }

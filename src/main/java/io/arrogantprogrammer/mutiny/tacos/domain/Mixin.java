@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.domain.tacos;
+package io.arrogantprogrammer.mutiny.tacos.domain;
 
 import java.net.URL;
 

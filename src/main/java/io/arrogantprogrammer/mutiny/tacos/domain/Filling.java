@@ -1,6 +1,4 @@
-package io.arrogantprogrammer.mutiny.domain.tacos;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package io.arrogantprogrammer.mutiny.tacos.domain;
 
 import java.net.URL;
 

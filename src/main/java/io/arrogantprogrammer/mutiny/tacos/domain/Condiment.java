@@ -1,8 +1,8 @@
-package io.arrogantprogrammer.mutiny.domain.tacos;
+package io.arrogantprogrammer.mutiny.tacos.domain;
 
 import java.net.URL;
 
-public class Shell {
+public class Condiment {
 
     private String slug;
 
@@ -12,19 +12,19 @@ public class Shell {
 
     private URL url;
 
-    public Shell(String slug, String recipe, String name, URL url) {
+    public Condiment(String slug, String recipe, String name, URL url) {
         this.slug = slug;
         this.recipe = recipe;
         this.name = name;
         this.url = url;
     }
 
-    public Shell() {
+    public Condiment() {
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Shell{");
+        final StringBuilder sb = new StringBuilder("Condiment{");
         sb.append("slug='").append(slug).append('\'');
         sb.append(", recipe='").append(recipe).append('\'');
         sb.append(", name='").append(name).append('\'');
@@ -38,12 +38,12 @@ public class Shell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Shell shell = (Shell) o;
+        Condiment condiment = (Condiment) o;
 
-        if (slug != null ? !slug.equals(shell.slug) : shell.slug != null) return false;
-        if (recipe != null ? !recipe.equals(shell.recipe) : shell.recipe != null) return false;
-        if (name != null ? !name.equals(shell.name) : shell.name != null) return false;
-        return url != null ? url.equals(shell.url) : shell.url == null;
+        if (slug != null ? !slug.equals(condiment.slug) : condiment.slug != null) return false;
+        if (recipe != null ? !recipe.equals(condiment.recipe) : condiment.recipe != null) return false;
+        if (name != null ? !name.equals(condiment.name) : condiment.name != null) return false;
+        return url != null ? url.equals(condiment.url) : condiment.url == null;
     }
 
     @Override
@@ -86,4 +86,5 @@ public class Shell {
     public void setUrl(URL url) {
         this.url = url;
     }
+
 }

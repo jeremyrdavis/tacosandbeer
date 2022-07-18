@@ -1,8 +1,8 @@
-package io.arrogantprogrammer.mutiny.domain.tacos;
+package io.arrogantprogrammer.mutiny.tacos.domain;
 
 import java.net.URL;
 
-public class Seasoning {
+public class Shell {
 
     private String slug;
 
@@ -12,19 +12,19 @@ public class Seasoning {
 
     private URL url;
 
-    public Seasoning(String slug, String recipe, String name, URL url) {
+    public Shell(String slug, String recipe, String name, URL url) {
         this.slug = slug;
         this.recipe = recipe;
         this.name = name;
         this.url = url;
     }
 
-    public Seasoning() {
+    public Shell() {
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Seasoning{");
+        final StringBuilder sb = new StringBuilder("Shell{");
         sb.append("slug='").append(slug).append('\'');
         sb.append(", recipe='").append(recipe).append('\'');
         sb.append(", name='").append(name).append('\'');
@@ -38,12 +38,12 @@ public class Seasoning {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Seasoning seasoning = (Seasoning) o;
+        Shell shell = (Shell) o;
 
-        if (slug != null ? !slug.equals(seasoning.slug) : seasoning.slug != null) return false;
-        if (recipe != null ? !recipe.equals(seasoning.recipe) : seasoning.recipe != null) return false;
-        if (name != null ? !name.equals(seasoning.name) : seasoning.name != null) return false;
-        return url != null ? url.equals(seasoning.url) : seasoning.url == null;
+        if (slug != null ? !slug.equals(shell.slug) : shell.slug != null) return false;
+        if (recipe != null ? !recipe.equals(shell.recipe) : shell.recipe != null) return false;
+        if (name != null ? !name.equals(shell.name) : shell.name != null) return false;
+        return url != null ? url.equals(shell.url) : shell.url == null;
     }
 
     @Override

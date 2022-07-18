@@ -1,7 +1,7 @@
-package io.arrogantprogrammer.mutiny.domain;
+package io.arrogantprogrammer.mutiny.pies;
 
-import io.arrogantprogrammer.mutiny.domain.beers.Beer;
-import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
+import io.arrogantprogrammer.mutiny.beers.domain.Beer;
+import io.arrogantprogrammer.mutiny.greetings.domain.Greeting;
 
 public class PieAndPint {
 

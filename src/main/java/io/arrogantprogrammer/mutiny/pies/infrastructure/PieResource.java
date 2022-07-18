@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.infrastructure.rest;
+package io.arrogantprogrammer.mutiny.pies.infrastructure;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

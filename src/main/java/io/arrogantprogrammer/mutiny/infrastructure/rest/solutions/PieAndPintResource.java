@@ -1,8 +1,8 @@
 package io.arrogantprogrammer.mutiny.infrastructure.rest.solutions;
 
-import io.arrogantprogrammer.mutiny.domain.PieAndPint;
-import io.arrogantprogrammer.mutiny.domain.beers.Beer;
-import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
+import io.arrogantprogrammer.mutiny.pies.PieAndPint;
+import io.arrogantprogrammer.mutiny.beers.domain.Beer;
+import io.arrogantprogrammer.mutiny.greetings.domain.Greeting;
 import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny.MutinyBeerClient;
 import io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny.MutinyPieClient;
 import io.arrogantprogrammer.mutiny.infrastructure.services.GreetingService;

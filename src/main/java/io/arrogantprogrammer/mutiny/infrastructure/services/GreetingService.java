@@ -1,6 +1,6 @@
 package io.arrogantprogrammer.mutiny.infrastructure.services;
 
-import io.arrogantprogrammer.mutiny.domain.greeting.Greeting;
+import io.arrogantprogrammer.mutiny.greetings.domain.Greeting;
 import io.quarkus.runtime.Startup;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;

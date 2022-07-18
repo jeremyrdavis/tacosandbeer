@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.domain.beers;
+package io.arrogantprogrammer.mutiny.beers.domain;
 
 public class Beer {
 

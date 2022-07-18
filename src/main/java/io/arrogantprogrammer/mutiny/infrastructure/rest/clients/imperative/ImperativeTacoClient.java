@@ -1,6 +1,6 @@
 package io.arrogantprogrammer.mutiny.infrastructure.rest.clients.imperative;
 
-import io.arrogantprogrammer.mutiny.domain.tacos.*;
+import io.arrogantprogrammer.mutiny.domain.tacos.domain.*;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.GET;

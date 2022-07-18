@@ -1,6 +1,6 @@
 package io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny;
 
-import io.arrogantprogrammer.mutiny.domain.beers.Beer;
+import io.arrogantprogrammer.mutiny.beers.domain.Beer;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 

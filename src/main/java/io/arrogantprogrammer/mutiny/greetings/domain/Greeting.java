@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.mutiny.domain.greeting;
+package io.arrogantprogrammer.mutiny.greetings.domain;
 
 import io.vertx.mutiny.sqlclient.Row;
 
