@@ -1,6 +1,6 @@
 package io.arrogantprogrammer.mutiny.infrastructure.rest.clients.mutiny;
 
-import io.arrogantprogrammer.mutiny.domain.tacos.domain.*;
+import io.arrogantprogrammer.mutiny.tacos.domain.*;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
