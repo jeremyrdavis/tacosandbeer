@@ -22,12 +22,16 @@ public class PieAndPint {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("PieAndPint{");
-        sb.append("greeting=").append(greeting);
-        sb.append(", pint=").append(pint);
-        sb.append(", pie='").append(pie).append('\'');
-        sb.append('}');
-        return sb.toString();
+
+        return new StringBuilder()
+                .append(greeting.getBody())
+                .append("! Today's Pie is a ")
+                .append(this.pie)
+                .append(", and today's pint is ")
+                .append(this.pint.getName())
+                .append(" ")
+                .append(this.pint.getTagline())
+                .toString();
     }
 
     public Greeting getGreeting() {

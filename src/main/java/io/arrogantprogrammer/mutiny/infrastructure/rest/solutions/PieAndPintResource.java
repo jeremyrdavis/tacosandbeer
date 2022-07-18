@@ -53,7 +53,6 @@ public class PieAndPintResource {
                 .map(t -> {
                     return new PieAndPint(t.getItem1(), t.getItem2(), t.getItem3()).toString();
                 });
-//        return getRandomGreeting().onItem().toString();
     }
 
     private Uni<PieAndPint> reallyRandomPie() {
@@ -75,15 +74,15 @@ public class PieAndPintResource {
         return Uni.<String>combine()
                 .all()
                 .unis(
-                        mutinyPieClient.getVeg().onItem().transform(vegetables -> {
-                            return vegetables.get(new Random().nextInt(vegetables.size()));
-                        }),
                         mutinyPieClient.getProtein().onItem().transform(proteins -> {
                             return proteins.get(new Random().nextInt(proteins.size()));
+                        }),
+                        mutinyPieClient.getVeg().onItem().transform(vegetables -> {
+                            return vegetables.get(new Random().nextInt(vegetables.size()));
                         }))
                 .asTuple()
                 .map(t -> {
-                    return new String(t.getItem1()).concat(t.getItem2());
+                    return String.format("%s and %s pie", t.getItem1(), t.getItem2());
                 });
     }
 

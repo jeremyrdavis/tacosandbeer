@@ -21,6 +21,7 @@ public class GreetingResource {
     @GET
     @Path("/imperative/{name}")
     public String imperativeHello(@PathParam("name") String name) {
+
         return String.format("Hello, %s!", name);
     }
 
